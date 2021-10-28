@@ -9,7 +9,7 @@ public class Recipe {
     public Recipe(String name, int cookingTime) {
         this.name = name;
         this.cookingTime = cookingTime;
-        this.ingredients = new ArrayList<>();
+        ingredients = new ArrayList<>();
     }
 
     public void addIngredient(String ingredient) {
