@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class UserInterface {
     private Scanner scanner;
-    private allRecipes recipeList;
+    private AllRecipes recipeList;
 
     public UserInterface(Scanner scanner) {
         this.scanner = scanner;
@@ -40,7 +40,7 @@ public class UserInterface {
         String fileName = this.scanner.nextLine();
 
         try {
-            recipeList = new allRecipes(fileName);
+            recipeList = new AllRecipes(fileName);
         } catch(RecipeNotFoundException rnfe) {
             System.out.println("Error: File not found: " + fileName);
         }
@@ -64,7 +64,7 @@ public class UserInterface {
     private void findName() {
         System.out.print("Searched word: ");
         String searchedWord = this.scanner.nextLine();
-        allRecipes results = this.recipeList.search(searchedWord);
+        AllRecipes results = this.recipeList.search(searchedWord);
 
         System.out.println(results);
     }
@@ -72,7 +72,7 @@ public class UserInterface {
     private void findCookingTime() {
         System.out.print("Max cooking time: ");
         int maxCookingTime = Integer.parseInt(this.scanner.nextLine());
-        allRecipes results = this.recipeList.search(maxCookingTime);
+        AllRecipes results = this.recipeList.search(maxCookingTime);
 
         System.out.println(results);
     }
@@ -80,7 +80,7 @@ public class UserInterface {
     private void findIngredient() {
         System.out.print("Ingredient: ");
         String ingredient = this.scanner.nextLine();
-        allRecipes results = this.recipeList.searchIngredients(ingredient);
+        AllRecipes results = this.recipeList.searchIngredients(ingredient);
 
         System.out.println(results);
     }
