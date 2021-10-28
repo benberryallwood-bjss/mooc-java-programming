@@ -47,14 +47,13 @@ public class UserInterface {
     }
 
     private void printCommands() {
-        System.out.println();
-        System.out.println("Commands:");
-        System.out.println("list - lists the recipes");
-        System.out.println("stop - stops the program");
-        System.out.println("find name - searches recipes by name");
-        System.out.println("find cooking time - searches recipes by cooking time");
-        System.out.println("find ingredient - searches recipes by ingredient");
-        System.out.println();
+        System.out.println("\n"
+            + "Commands:\n"
+            + "list - lists the recipes\n"
+            + "stop - stops the program\n"
+            + "find name - searches recipes by name\n"
+            + "find cooking time - searches recipes by cooking time\n"
+            + "find ingredient - searches recipes by ingredient\n");
     }
 
     private void list() {
