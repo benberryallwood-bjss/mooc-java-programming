@@ -8,13 +8,13 @@ public class AllRecipes {
 
     public AllRecipes(String fileName) {
         try (Scanner recipeFile = new Scanner(Paths.get(fileName))) {
-            loadRecipeFromFile(recipeFile);
+            loadRecipesFromFile(recipeFile);
         } catch (Exception e) {
             throw new RecipeNotFoundException();
         }
     }
 
-    private void loadRecipeFromFile(Scanner scanner) {
+    private void loadRecipesFromFile(Scanner scanner) {
         recipes = new ArrayList<>();
         while (scanner.hasNextLine()) {
             Recipe recipe = new RecipeFileFormat().parse(scanner);
