@@ -9,15 +9,49 @@ public class LiquidContainers {
         int second = 0;
 
         while (true) {
-            System.out.print("First: " + first + "/100");
-            System.out.print("Second: " + second + "/100");
+            System.out.println("First: " + first + "/100");
+            System.out.println("Second: " + second + "/100");
 
             String input = scan.nextLine();
             if (input.equals("quit")) {
                 break;
             }
 
+            String[] parts = input.split(" ");
+            String command = parts[0];
+            int amount = Integer.parseInt(parts[1]);
 
+            if (amount < 0) {
+                break;
+            }
+
+            switch (command) {
+                case "add":
+                    first += amount;
+                    break;
+                case "move":
+                    if (first <= amount) {
+                        second += first;
+                        first = 0;
+                    } else {
+                        first -= amount;
+                        second += amount;
+                    }
+                    break;
+                case "remove":
+                    second -= amount;
+                    break;
+            }
+
+            if (first > 100) {
+                first = 100;
+            }
+            if (second > 100) {
+                second = 100;
+            }
+            if (second < 0) {
+                second = 0;
+            }
         }
     }
 
