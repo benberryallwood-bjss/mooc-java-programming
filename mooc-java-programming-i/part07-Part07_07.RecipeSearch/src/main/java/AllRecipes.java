@@ -3,10 +3,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class allRecipes {
+public class AllRecipes {
     private List<Recipe> recipes;
 
-    public allRecipes(String fileName) {
+    public AllRecipes(String fileName) {
         try (Scanner recipeFile = new Scanner(Paths.get(fileName))) {
             loadRecipeFromFile(recipeFile);
         } catch (Exception e) {
@@ -32,7 +32,7 @@ public class allRecipes {
         }
     }
 
-    public allRecipes() {
+    public AllRecipes() {
         recipes = new ArrayList<>();
     }
 
@@ -40,8 +40,8 @@ public class allRecipes {
         recipes.add(recipe);
     }
 
-    public allRecipes search(String searchedWord) {
-        allRecipes results = new allRecipes();
+    public AllRecipes search(String searchedWord) {
+        AllRecipes results = new AllRecipes();
         for (Recipe recipe : recipes) {
             if (recipe.getName().contains(searchedWord)) {
                 results.add(recipe);
@@ -50,8 +50,8 @@ public class allRecipes {
         return results;
     }
 
-    public allRecipes search(int maxCookingTime) {
-        allRecipes results = new allRecipes();
+    public AllRecipes search(int maxCookingTime) {
+        AllRecipes results = new AllRecipes();
         for (Recipe recipe : recipes) {
             if (recipe.getCookingTime() <= maxCookingTime) {
                 results.add(recipe);
@@ -60,8 +60,8 @@ public class allRecipes {
         return results;
     }
 
-    public allRecipes searchIngredients(String ingredient) {
-        allRecipes results = new allRecipes();
+    public AllRecipes searchIngredients(String ingredient) {
+        AllRecipes results = new AllRecipes();
         for (Recipe recipe : recipes) {
             if (recipe.getIngredients().contains(ingredient)) {
                 results.add(recipe);
