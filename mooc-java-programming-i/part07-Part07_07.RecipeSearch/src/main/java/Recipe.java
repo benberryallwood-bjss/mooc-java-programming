@@ -1,9 +1,10 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Recipe {
     private String name;
     private int cookingTime;
-    private ArrayList<String> ingredients;
+    private List<String> ingredients;
 
     public Recipe(String name, int cookingTime) {
         this.name = name;
@@ -12,7 +13,7 @@ public class Recipe {
     }
 
     public void addIngredient(String ingredient) {
-        this.ingredients.add(ingredient);
+        ingredients.add(ingredient);
     }
 
     public String getName() {
@@ -23,11 +24,12 @@ public class Recipe {
         return cookingTime;
     }
 
-    public ArrayList<String> getIngredients() {
+    public List<String> getIngredients() {
         return ingredients;
     }
 
+    @Override
     public String toString() {
-        return this.name + ", cooking time: " + this.cookingTime;
+        return name + ", cooking time: " + cookingTime;
     }
 }

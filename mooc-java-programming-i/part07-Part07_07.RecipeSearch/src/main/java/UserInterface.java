@@ -11,12 +11,12 @@ public class UserInterface {
     }
 
     public void start() {
-        readFile();
+        selectRecipes();
         printCommands();
 
         while (true) {
             System.out.print("Enter command: ");
-            String command = this.scanner.nextLine();
+            String command = scanner.nextLine();
 
             switch (command) {
                 case "list":
@@ -37,14 +37,14 @@ public class UserInterface {
         }
     }
 
-    private void readFile() {
+    private void selectRecipes() {
         System.out.print("File to read: ");
         String fileName = this.scanner.nextLine();
 
-        try (Scanner recipeFile = new Scanner(Paths.get(fileName))) {
-            this.recipeList = new RecipeList(recipeFile);
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
+        try {
+            recipeList = new RecipeList(fileName);
+        } catch(RecipeNotFoundException rfne) {
+            System.out.println("Error: File not found: " + fileName);
         }
     }
 
@@ -60,7 +60,7 @@ public class UserInterface {
     }
 
     private void list() {
-        System.out.println(this.recipeList);
+        System.out.println(recipeList);
     }
 
     private void findName() {

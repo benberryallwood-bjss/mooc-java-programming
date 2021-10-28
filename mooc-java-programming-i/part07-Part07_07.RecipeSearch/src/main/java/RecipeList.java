@@ -1,11 +1,21 @@
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class RecipeList {
-    private ArrayList<Recipe> recipes;
+    private List<Recipe> recipes;
 
-    public RecipeList(Scanner scanner) {
-        this.recipes = new ArrayList<>();
+    public RecipeList(String fileName) {
+        try (Scanner recipeFile = new Scanner(Paths.get(fileName))) {
+            loadRecipeFromFile(recipeFile);
+        } catch (Exception e) {
+            throw new RecipeNotFoundException();
+        }
+    }
+
+    private void loadRecipeFromFile(Scanner scanner) {
+        recipes = new ArrayList<>();
         while (scanner.hasNextLine()) {
             String name = scanner.nextLine();
             int cookingTime = Integer.parseInt(scanner.nextLine());
@@ -18,21 +28,21 @@ public class RecipeList {
                 recipe.addIngredient(line);
             }
 
-            this.recipes.add(recipe);
+            recipes.add(recipe);
         }
     }
 
     public RecipeList() {
-        this.recipes = new ArrayList<>();
+        recipes = new ArrayList<>();
     }
 
     public void add(Recipe recipe) {
-        this.recipes.add(recipe);
+        recipes.add(recipe);
     }
 
     public RecipeList search(String searchedWord) {
         RecipeList results = new RecipeList();
-        for (Recipe recipe : this.recipes) {
+        for (Recipe recipe : recipes) {
             if (recipe.getName().contains(searchedWord)) {
                 results.add(recipe);
             }
@@ -42,7 +52,7 @@ public class RecipeList {
 
     public RecipeList search(int maxCookingTime) {
         RecipeList results = new RecipeList();
-        for (Recipe recipe : this.recipes) {
+        for (Recipe recipe : recipes) {
             if (recipe.getCookingTime() <= maxCookingTime) {
                 results.add(recipe);
             }
@@ -52,7 +62,7 @@ public class RecipeList {
 
     public RecipeList searchIngredients(String ingredient) {
         RecipeList results = new RecipeList();
-        for (Recipe recipe : this.recipes) {
+        for (Recipe recipe : recipes) {
             if (recipe.getIngredients().contains(ingredient)) {
                 results.add(recipe);
             }
@@ -60,6 +70,7 @@ public class RecipeList {
         return results;
     }
 
+    @Override
     public String toString() {
         String output = "\n";
         for (Recipe recipe : recipes) {
