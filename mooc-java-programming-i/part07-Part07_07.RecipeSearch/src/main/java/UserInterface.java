@@ -43,7 +43,7 @@ public class UserInterface {
 
         try {
             recipeList = new RecipeList(fileName);
-        } catch(RecipeNotFoundException rfne) {
+        } catch(RecipeNotFoundException rnfe) {
             System.out.println("Error: File not found: " + fileName);
         }
     }
