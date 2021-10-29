@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Part04_31.SportStatistics" />
+        <module name="part04-Part04_31.SportStatistics" />
       </profile>
     </annotationProcessing>
   </component>
