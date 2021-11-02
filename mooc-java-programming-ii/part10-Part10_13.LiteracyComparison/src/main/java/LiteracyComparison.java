@@ -12,7 +12,7 @@ public class LiteracyComparison {
         try {
             Files.lines(Paths.get("literacy.csv"))
                     .map(line -> line.split(","))
-                    .sorted((line1, line2) -> Double.compare(Double.parseDouble(line1[5].trim()), Double.parseDouble(line2[5].trim())))
+                    .sorted((parts1, parts2) -> parts1[5].compareTo(parts2[5]))
                     .map(parts -> parts[3] + " (" + parts[4] + "), " + parts[2].trim().split(" ")[0] + ", " + parts[5])
                     .forEach(System.out::println);
         } catch (IOException e) {
