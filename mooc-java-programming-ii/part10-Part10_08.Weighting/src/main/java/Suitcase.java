@@ -1,62 +1,55 @@
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Suitcase {
 
     private int maximumWeight;
-    private ArrayList<Item> Items;
+    private List<Item> items;
 
     public Suitcase(int maximumWeight) {
-        this.Items = new ArrayList<>();
+        items = new ArrayList<>();
         this.maximumWeight = maximumWeight;
     }
 
-    public void addItem(Item Item) {
-        if (this.totalWeight() + Item.getWeight() > this.maximumWeight) {
+    public void addItem(Item item) {
+        if (totalWeight() + item.getWeight() > maximumWeight) {
             return;
         }
 
-        this.Items.add(Item);
+        items.add(item);
     }
 
     public int totalWeight() {
-        int summa = 0;
-        int indeksi = 0;
-        while (indeksi < this.Items.size()) {
-        summa += this.Items.get(indeksi).getweight();
-        indeksi++;
-        }
-        return summa;
+        return items.stream()
+                .mapToInt(item -> item.getWeight())
+                .reduce(0, (currentSum, value) -> currentSum + value);
     }
 
     public void printItems() {
-        int indeksi = 0;
-        while (indeksi < this.Items.size()) {
-        Item t = this.Items.get(indeksi);
-        System.out.println(t);
-        indeksi++;
-        }
+        items.forEach(System.out::println);
     }
 
     public Item heaviestItem() {
-        if (this.Items.isEmpty()) {
+        if (items.isEmpty()) {
             return null;
         }
 
-        // Tutustumme järjestämiseen hieman myöhemmin kurssilla
-        return this.Items.stream().max((t1, t2) -> t1.getWeight() - t2.getWeight()).get();
+        return items.stream()
+                .max((t1, t2) -> t1.getWeight() - t2.getWeight())
+                .get();
     }
 
     @Override
     public String toString() {
-        if (this.Items.isEmpty()) {
+        if (items.isEmpty()) {
             return "no items (0 kg)";
         }
 
-        if (this.Items.size() == 1) {
-            return "1 item (" + this.totalWeight() + " kg)";
+        if (items.size() == 1) {
+            return "1 item (" + totalWeight() + " kg)";
         }
 
-        return this.Items.size() + " items (" + this.totalWeight() + " kg)";
+        return items.size() + " items (" + totalWeight() + " kg)";
     }
 }
