@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Part11_10.FlightControl" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="FlightControl.Main" />
+    <module name="Part11_10.FlightControl" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
