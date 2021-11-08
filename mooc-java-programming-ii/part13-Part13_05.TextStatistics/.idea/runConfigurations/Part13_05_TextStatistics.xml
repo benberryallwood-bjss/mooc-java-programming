@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Part13_05.TextStatistics" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="textstatistics.TextStatisticsApplication" />
+    <module name="Part13_05.TextStatistics" />
+    <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/javafx-sdk-17.0.1/lib --add-modules=javafx.controls" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
