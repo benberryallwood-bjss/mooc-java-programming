@@ -1,6 +1,7 @@
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class MagicSquare {
 
@@ -12,20 +13,53 @@ public class MagicSquare {
             size = 2;
         }
 
-        this.square = new int[size][size];
+        square = new int[size][size];
     }
 
     // implement these three methods
     public ArrayList<Integer> sumsOfRows() {
-        return new ArrayList<>();
+        ArrayList<Integer> sumsOfRows = new ArrayList<>();
+        for (int[] row : square) {
+            int sum = 0;
+            for (int i : row) {
+                sum += i;
+            }
+            sumsOfRows.add(sum);
+        }
+        return sumsOfRows;
     }
 
     public ArrayList<Integer> sumsOfColumns() {
-        return new ArrayList<>();
+        ArrayList<Integer> sumsOfColumns = new ArrayList<>(square.length);
+        for (int i = 0; i < square.length; i++) {
+            sumsOfColumns.add(0);
+        }
+
+        for (int[] row : square) {
+            for (int i = 0; i < row.length; i++) {
+                int sum = sumsOfColumns.get(i) + row[i];
+                sumsOfColumns.set(i, sum);
+            }
+        }
+        return sumsOfColumns;
     }
 
     public ArrayList<Integer> sumsOfDiagonals() {
-        return new ArrayList<>();
+        ArrayList<Integer> sumsOfDiagonals = new ArrayList<>();
+
+        int sumOne = 0;
+        for (int i = 0; i < square.length; i++) {
+            sumOne += square[i][i];
+        }
+        sumsOfDiagonals.add(sumOne);
+
+        int sumTwo = 0;
+        for (int i = 0; i < square.length; i++) {
+            sumTwo += square[i][square.length - 1 - i];
+        }
+        sumsOfDiagonals.add(sumTwo);
+
+        return sumsOfDiagonals;
     }
 
     // ready-made helper methods -- don't touch these
