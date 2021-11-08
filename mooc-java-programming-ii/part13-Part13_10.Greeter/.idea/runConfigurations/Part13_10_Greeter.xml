@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Part13_10.Greeter" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="application.GreeterApplication" />
+    <module name="Part13_10.Greeter" />
+    <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/javafx-sdk-17.0.1/lib --add-modules=javafx.controls" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
