@@ -5,7 +5,7 @@ public class ProductWarehouseWithHistory extends ProductWarehouse {
         super(productName, capacity);
         super.addToWarehouse(initialBalance);
         changeHistory = new ChangeHistory();
-        changeHistory.add(initialBalance);
+        changeHistory.add(getBalance());
     }
 
     public void addToWarehouse(double amount) {
