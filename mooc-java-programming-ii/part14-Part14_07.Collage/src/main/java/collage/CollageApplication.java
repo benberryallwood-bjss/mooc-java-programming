@@ -30,19 +30,22 @@ public class CollageApplication extends Application {
         PixelWriter imageWriter = targetImage.getPixelWriter();
 
         int yCoordinate = 0;
-        while (yCoordinate < height) {
+        while (yCoordinate < height / 2) {
             int xCoordinate = 0;
-            while (xCoordinate < width) {
+            while (xCoordinate < width / 2) {
 
-                Color color = imageReader.getColor(xCoordinate, yCoordinate);
+                Color color = imageReader.getColor(xCoordinate * 2, yCoordinate * 2);
                 double red = color.getRed();
                 double green = color.getGreen();
                 double blue = color.getBlue();
                 double opacity = color.getOpacity();
 
-                Color newColor = new Color(red, green, blue, opacity);
+                Color newColor = new Color(1.0 - red, 1.0 - green, 1.0 - blue, opacity);
 
                 imageWriter.setColor(xCoordinate, yCoordinate, newColor);
+                imageWriter.setColor(xCoordinate + width / 2, yCoordinate, newColor);
+                imageWriter.setColor(xCoordinate, yCoordinate + height / 2, newColor);
+                imageWriter.setColor(xCoordinate + width / 2, yCoordinate + height / 2, newColor);
 
                 xCoordinate++;
             }
