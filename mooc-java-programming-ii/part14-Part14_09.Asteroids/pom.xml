@@ -92,7 +92,7 @@
                 <dependency>
                     <groupId>org.testfx</groupId>
                     <artifactId>openjfx-monocle</artifactId>
-                    <version>8u76-b04</version>
+                    <version>jdk-11+26</version>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
